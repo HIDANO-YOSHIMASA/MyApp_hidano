@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator >
         <Stack.Screen name="Home" component={HomeScreen} options={{title:"ホーム画面"}}/>
         <Stack.Screen name="Menu" component={MenuScreen} options={{title:"メニュー画面"}}/>
       </Stack.Navigator>

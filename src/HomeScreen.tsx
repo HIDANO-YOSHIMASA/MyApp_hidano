@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, SafeAreaView, Image, Platform } from "react-native";
+import { StyleSheet, Text, View, Button, SafeAreaView, ImageBackground, Platform } from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import logo from "../assets/sparta.jpg";
 import Pic01 from "../assets/hamburger.jpg";
@@ -12,20 +12,12 @@ export default function HomeScreen({navigation}: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
-        {/* <Image
-          source={logo}
-          style={{
-            width: 50,
-            height: 50,
-            resizeMode: "contain",
-          }}
-        /> */}
-        <Text style={{fontSize: 24, letterSpacing: 1, color: 'white'}}>Contemporary Restaurant</Text>
+        <Text style={{fontSize: 12, letterSpacing: 2, color: 'white', marginBottom: 20,}}>Contemporary Restaurant</Text>
       </View>
 
-        <Image
+        <ImageBackground
           source={Pic01}
-          style={styles.middleContainer} />
+          style={styles.backgroundImage} />
         <Button style={styles.buttons} title="to Menu" onPress={() => navigation.navigate("Menu")} />
 
       <View style={styles.bottomContainer}>
@@ -45,14 +37,14 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   topContainer: {
-    flex: 1,
-    flexDirection: "row",
+    // flex: 1,
+    // flexDirection: "row",
     justifyContent: "space-around",
   },
-  middleContainer: {
+  backgroundImage: {
     flex: 4,
-    width: 700,
-    height: 700,
+    width: 500,
+    height: 600,
     resizeMode: "contain",
     marginBottom: 10,
   },
