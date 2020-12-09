@@ -18,7 +18,7 @@ export default function HomeScreen({navigation}: Props) {
         <ImageBackground
           source={Pic01}
           style={styles.backgroundImage} />
-        <Button style={styles.buttons} title="to Menu" onPress={() => navigation.navigate("Menu")} />
+        {/* <Button style={styles.buttons} title="to Menu" onPress={() => navigation.navigate("Menu")} /> */}
 
       <View style={styles.bottomContainer}>
         <Button title="ログイン" onPress={() => navigation.navigate("Menu")} />

@@ -1,3 +1,9 @@
+interface Menu {
+    text: string;
+    uri: string;
+    desc: string;
+}
+
 type RootStackParamList = {
     Home: undifined;
     Menu: undefined;

@@ -11,21 +11,23 @@ type Props = {
 export default function MenuScreen({navigation}: Props) {
   return (
     <View style={styles.container}>
+    <View style={{flex:2}}></View>
       <Text style={{ fontSize: 20, marginBottom: 45 }}>Menu</Text>
       <TouchableOpacity style={{ flexDirection: "row", marginBottom: 45 }}>
-        <Icon style={{ marginRight: 8 }} name="camera" size={20} />
+        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
         <Text>Food/フード</Text>
       </TouchableOpacity>
       <TouchableOpacity style={{ flexDirection: "row", marginBottom: 45 }}>
-        <Icon style={{ marginRight: 8 }} name="camera" size={20} />
+        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
         <Text>Drink/ドリンク</Text>
       </TouchableOpacity>
       <TouchableOpacity style={{ flexDirection: "row" }}>
-        <Icon style={{ marginRight: 8 }} name="camera" size={20} />
-        <Text>Sweetsスイーツ</Text>
+        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
+        <Text>Sweets/スイーツ</Text>
       </TouchableOpacity>
       <View style={styles.spacer}></View>
-      <Button title="Home" onPress={() => navigation.goBack()} />
+      <Button title="ご注文はこちらから" onPress={() => navigation.goBack()} />
+      {/* <Button title="Home" onPress={() => navigation.goBack()} /> */}
     </View>
   );
 }
