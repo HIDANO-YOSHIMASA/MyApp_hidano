@@ -5,12 +5,13 @@ interface Menu {
 }
 
 type RootStackParamList = {
-    Home: undifined;
+    Home: undefined;
     Menu: undefined;
     Food: undefined;
     Drink: undefined;
     Sweets: undefined;
     Order: undefined;
+    Test: undefined;
 }
 
 declare module "*.jpg";

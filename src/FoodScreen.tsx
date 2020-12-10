@@ -25,17 +25,11 @@ const memos = [
   },
 ];
 
-  return (
-    <View style={styles.container}>
-      {/* <FlatList
-        data={memos}
-        renderItem={({item})=>{
-        <Text>{item.text}</Text>
-        keyExtractor={(item, index)=>index.toString()}
-        }}
-      /> */}
-    </View>
-  );
+  // return (
+  //   <View style={styles.container}>
+  //     <Image source={{ undefined }} />
+  //   </View>
+  // );
 }
 
 const styles = StyleSheet.create({

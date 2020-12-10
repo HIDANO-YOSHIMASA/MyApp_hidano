@@ -26,7 +26,7 @@ export default function MenuScreen({navigation}: Props) {
         <Text>Sweets/スイーツ</Text>
       </TouchableOpacity>
       <View style={styles.spacer}></View>
-      <Button title="ご注文はこちらから" onPress={() => navigation.goBack()} />
+      <Button title="ご注文はこちらから" onPress={() => navigation.navigate('Order')} />
       {/* <Button title="Home" onPress={() => navigation.goBack()} /> */}
     </View>
   );

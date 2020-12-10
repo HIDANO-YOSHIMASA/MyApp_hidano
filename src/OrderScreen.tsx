@@ -12,38 +12,35 @@ export default function FoodScreen({ navigation }: Props) {
   const [count, setCount] = useState(0);
   const [take, setTake] = useState(0);
   
-  // const countItems = () => {
-  //   return (
-  //     <View>
-  //       <Text style={{ fontSize: 16 }}>数量</Text>
-  //       <Text style={{ fontSize: 45 }}>{count}</Text>
-  //       <Pressable>
-  //         <Text style={{ fontSize: 24 }} onPress={countUp}>
-  //           +
-  //         </Text>
-  //         <Text style={{ fontSize: 45 }} onPress={countDown}>
-  //           -
-  //         </Text>
-  //       </Pressable>
-  //     </View>
-  //   );
-  // };
-
   const countUp = () => {
     setCount(count + 1);
   }
-  
   const countDown = () => {
     setCount(count - 1);
   }
-
   const takeUp = () => {
     setTake(take + 1);
   }
-  
   const takeDown = () => {
     setTake(take - 1);
   }
+
+  const countItems = (
+    <View>
+      <Text style={{ fontSize: 16 }}>数量</Text>
+      <Text style={{ fontSize: 45 }}>{count}</Text>
+      <Pressable style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+        <Text style={{ fontSize: 24 }} onPress={countUp}>
+          +
+        </Text>
+        <Text style={{ fontSize: 45 }} onPress={countDown}>
+          -
+        </Text>
+      </Pressable>
+    </View>
+
+  )
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,42 +52,18 @@ export default function FoodScreen({ navigation }: Props) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 16 }}>数量</Text>
-        <Text style={{ fontSize: 45 }}>{count}</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
-          <Pressable style={{ flexDirection: "row", }}>
-            <Text style={{ fontSize: 24, marginRight: 12 }} onPress={countUp}>
-              +
-            </Text>
-            <Text style={{ fontSize: 45 }} onPress={countDown}>
-              -
-            </Text>
-          </Pressable>
-        </View>
+        {countItems}
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 16 }}>数量</Text>
-        <Text style={{ fontSize: 45 }}>{take}</Text>
-        <Pressable>
-          <Text style={{ fontSize: 24 }} onPress={takeUp}>
-            +
-          </Text>
-          <Text style={{ fontSize: 45 }} onPress={takeDown}>
-            -
-          </Text>
-        </Pressable>
+       {countItems}
       </View>
 
       <View style={{ flex: 1 }}>
         <Text>合計金額</Text>
       </View>
+
+    
     </SafeAreaView>
   );
 }
