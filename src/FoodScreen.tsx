@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { StyleSheet, Text, View, Button, Image, FlatList} from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import {FlatList} from 'react-native-gesture-handler';
+
 
 type Props = {
   navigation: StackNavigationProp<RootStackParamList, "Food">;
@@ -9,28 +9,47 @@ type Props = {
 
 export default function FoodScreen({ navigation }: Props) {
 
-const memos = [
+const menu = [
   {  
-    text: "これがメモの内容だよ", 
-    createdAt: new Date(), 
+    uri:"../assets/hamburger.png",
+    title: "牛肉のステーキ", 
+    text: "美味しいお肉", 
   }, 
-  {
-    text: "2つ目のメモだよ", 
-    createdAt: 1585574700000, 
+  {  
+    uri:"../assets/hamburger.png",
+    title: "牛肉のステーキ", 
+    text: "美味しいお肉", 
   }, 
-  {
-    text:
-      "メモだよ３つ目のメモだよ", 
-    createdAt: 1234567890123, 
-  },
+  {  
+    uri:"../assets/hamburger.png",
+    title: "牛肉のステーキ", 
+    text: "美味しいお肉", 
+  }, 
+  
 ];
 
-  // return (
-  //   <View style={styles.container}>
-  //     <Image source={{ undefined }} />
-  //   </View>
-  // );
-}
+  
+  return (
+    <View>
+      <Image
+        source={uri: menu[0].uri}
+      />
+    </View>
+
+    // <FlatList
+    // data={menu}
+    // renderItem={({item})=>(
+    //   <View>
+    //     <Image source={{item.uri}}/>
+    //     <Text>{item.title}</Text>
+    //     <Text>{item.text}</Text>
+    //   </View>
+    // )}
+    // keyExtractor={(item, index)=>index.toString()}
+    // />
+  );
+  }
+
 
 const styles = StyleSheet.create({
   container: {

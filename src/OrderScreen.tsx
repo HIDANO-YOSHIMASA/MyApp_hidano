@@ -56,11 +56,13 @@ export default function FoodScreen({ navigation }: Props) {
       </View>
 
       <View style={{ flex: 1 }}>
-       {countItems}
+        {countItems}
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text>合計金額</Text>
+        <Pressable style={styles.button}>
+          <Text>ご注文</Text>
+        </Pressable>
       </View>
 
     
@@ -76,4 +78,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
+  button:{
+    fontSize: 12,
+    borderRadius: 8,
+    borderWidth:2,
+    backgroundColor: 'res',
+    color: 'white',
+    padding: 10,
+  }
 });

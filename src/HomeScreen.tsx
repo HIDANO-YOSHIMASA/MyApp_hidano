@@ -21,10 +21,13 @@ export default function HomeScreen({navigation}: Props) {
         <ImageBackground
           source={Pic01}
           style={styles.backgroundImage} />
-        {/* <Button = {styles.buttons}style title="to Menu" onPress={() => navigation.navigate("Menu")} /> */}
+        <Button title="to Menu" onPress={() => navigation.navigate("Menu")} />
 
-      <View style={styles.bottomContainer}>
-        <Button title="ログイン" onPress={() => navigation.navigate("Menu")} />
+      <View style={styles.bottomContainer} >
+        <Button
+          title="ログイン" 
+          onPress={() => navigation.navigate("Menu")} 
+          />
         <Button title="新規登録" onPress={() => navigation.navigate("Menu")} />
       </View>
     </SafeAreaView>

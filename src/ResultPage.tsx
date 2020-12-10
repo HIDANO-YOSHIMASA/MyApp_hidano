@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, Image } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 type Props = {
-  navigation: StackNavigationProp<RootStackParamList, "Food">;
+  navigation: StackNavigationProp<RootStackParamList, "Result">;
 };
 
 export default function FoodScreen({ navigation }: Props) {

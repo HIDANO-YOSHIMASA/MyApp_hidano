@@ -11,22 +11,25 @@ type Props = {
 export default function MenuScreen({navigation}: Props) {
   return (
     <View style={styles.container}>
-    <View style={{flex:2}}></View>
-      <Text style={{ fontSize: 20, marginBottom: 45 }}>Menu</Text>
-      <TouchableOpacity style={{ flexDirection: "row", marginBottom: 45 }}>
-        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
+      <View style={{ flex: 2 }}></View>
+      <Text style={styles.text}>Menu</Text>
+      <TouchableOpacity style={styles.iconContainer}>
+        <Icon style={styles.icon} name="coffee" size={20} />
         <Text>Food/フード</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={{ flexDirection: "row", marginBottom: 45 }}>
-        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
+      <TouchableOpacity style={styles.iconContainer}>
+        <Icon style={styles.icon} name="coffee" size={20} />
         <Text>Drink/ドリンク</Text>
       </TouchableOpacity>
       <TouchableOpacity style={{ flexDirection: "row" }}>
-        <Icon style={{ marginRight: 8 }} name="coffee" size={20} />
+        <Icon style={styles.icon} name="coffee" size={20} />
         <Text>Sweets/スイーツ</Text>
       </TouchableOpacity>
       <View style={styles.spacer}></View>
-      <Button title="ご注文はこちらから" onPress={() => navigation.navigate('Order')} />
+      <Button
+        title="ご注文はこちらから"
+        onPress={() => navigation.navigate("Order")}
+      />
       {/* <Button title="Home" onPress={() => navigation.goBack()} /> */}
     </View>
   );
@@ -41,5 +44,17 @@ const styles = StyleSheet.create({
   },
   spacer: {
     flex: 2,
+  },
+  icon: {
+    marginRight: 8,
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    marginBottom: 45,
+  },
+  text: {
+    fontSize:20,
+    marginBottom: 45,
+
   }
 });

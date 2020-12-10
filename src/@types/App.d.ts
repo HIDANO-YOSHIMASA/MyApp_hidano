@@ -1,17 +1,15 @@
-interface Menu {
+interface FoodMenu {
+    uri:string;
+    title: string;
     text: string;
-    uri: string;
-    desc: string;
 }
 
 type RootStackParamList = {
     Home: undefined;
     Menu: undefined;
     Food: undefined;
-    Drink: undefined;
-    Sweets: undefined;
     Order: undefined;
-    Test: undefined;
+    Result: undefined;
 }
 
 declare module "*.jpg";
