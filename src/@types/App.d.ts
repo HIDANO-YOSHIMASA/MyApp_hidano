@@ -1,7 +1,8 @@
-interface FoodMenu {
+interface Menu {
     uri:string;
     title: string;
     text: string;
+    price: number;
 }
 
 type RootStackParamList = {

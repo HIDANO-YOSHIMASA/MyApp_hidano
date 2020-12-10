@@ -52,10 +52,12 @@ export default function FoodScreen({ navigation }: Props) {
       </View>
 
       <View style={{ flex: 1 }}>
+        <Text>テイクアウト</Text>
         {countItems}
       </View>
 
       <View style={{ flex: 1 }}>
+        <Text>イートイン</Text>
         {countItems}
       </View>
 

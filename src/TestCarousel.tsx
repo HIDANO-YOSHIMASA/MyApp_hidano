@@ -1,104 +1,125 @@
-// import React from "react";
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   Button,
-//   SafeAreaView,
-//   ImageBackground,
-//   Platform,
-//   Linking,
-//   TouchableHighlight,
-//   Image,
-//   Dimensions,
-// } from "react-native";
-// import { StackNavigationProp } from "@react-navigation/stack";
-// import logo from "../assets/sparta.jpg";
-// import Pic01 from "../assets/hamburger.jpg";
-// import Carousel, { Pagination } from "react-native-snap-carousel";
+import React, { useRef } from "react";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  StyleSheet,
+  View,
+  ImageBackground,
+  Animated,
+  useWindowDimensions
+} from "react-native";
 
-// type Props = {
-//   navigation: StackNavigationProp<RootStackParamList, "Home">;
-// };
+const images = new Array(6).fill('https://images.unsplash.com/photo-1556740749-887f6717d7e4');
 
-// export default function HomeScreen({ navigation }: Props) {
-//   const [active, setActive] = React.useState(0);
+const App = () => {
+  const scrollX = useRef(new Animated.Value(0)).current;
 
-//   const state = {
-//     data: [
-//       { title: "a", uri: "http://www.bluecode.jp/images/A.png" },
-//       { title: "b", uri: "http://www.bluecode.jp/images/B.png" },
-//       { title: "c", uri: "http://www.bluecode.jp/images/C.png" },
-//       { title: "d", uri: "http://www.bluecode.jp/images/D.png" },
-//       { title: "e", uri: "http://www.bluecode.jp/images/E.png" },
-//     ],
-//     activeSlide: 0,
-//   };
+  const { width: windowWidth } = useWindowDimensions();
 
-//   const _renderItem = ({ item, index }) => {
-//     return (
-//       <TouchableHighlight onPress={() => Linking.openURL(item.uri)}>
-//         <Image
-//           source={{ uri: item.uri }}
-//           style={{ width: "100%", height: "100%" }}
-//         />
-//       </TouchableHighlight>
-//     );
-//   };
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.scrollContainer}>
+        <ScrollView
+          horizontal={true}
+          style={styles.scrollViewStyle}
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onScroll={Animated.event([
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: scrollX
+                }
+              }
+            }
+          ])}
+          scrollEventThrottle={1}
+        >
+          {images.map((image, imageIndex) => {
+            return (
+              <View
+                style={{ width: windowWidth, height: 250 }}
+                key={imageIndex}
+              >
+                <ImageBackground source={{ uri: image }} style={styles.card}>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.infoText}>
+                      {"Image - " + imageIndex}
+                    </Text>
+                  </View>
+                </ImageBackground>
+              </View>
+            );
+          })}
+        </ScrollView>
+        <View style={styles.indicatorContainer}>
+          {images.map((image, imageIndex) => {
+            const width = scrollX.interpolate({
+              inputRange: [
+                windowWidth * (imageIndex - 1),
+                windowWidth * imageIndex,
+                windowWidth * (imageIndex + 1)
+              ],
+              outputRange: [8, 16, 8],
+              extrapolate: "clamp"
+            });
+            return (
+              <Animated.View
+                key={imageIndex}
+                style={[styles.normalDot, { width }]}
+              />
+            );
+          })}
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
 
-//   return (
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  scrollContainer: {
+    height: 300,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  card: {
+    flex: 1,
+    marginVertical: 4,
+    marginHorizontal: 16,
+    borderRadius: 5,
+    overflow: "hidden",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  textContainer: {
+    backgroundColor: "rgba(0,0,0, 0.7)",
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+    borderRadius: 5
+  },
+  infoText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold"
+  },
+  normalDot: {
+    height: 8,
+    width: 8,
+    borderRadius: 4,
+    backgroundColor: "silver",
+    marginHorizontal: 4
+  },
+  indicatorContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  }
+});
 
-//     <SafeAreaView style={{ height: 240 }}>
-//       <Carousel
-//         data={state.data}
-//         renderItem={_renderItem}
-//         itemWidth={Dimensions.get("window").width * 0.6}
-//         sliderWidth={Dimensions.get("window").width * 1.0}
-//         // containerCustomStyle={{ flex: 1, backgroundColor: "#eee" }}
-//         onSnapToItem={(index) => setActive(index)} //for pagination
-//         loop
-//         autoplay
-//       />
-//       <Pagination
-//         dotsLength={state.data.length} //dotの数
-//         activeDotIndex={state.activeSlide} //どのdotをactiveにするか
-//         containerStyle={{ paddingVertical: 15 }} //デフォルトではちと広い
-//       />
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "gray",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     paddingTop: Platform.OS === "android" ? 25 : 0,
-//   },
-//   topContainer: {
-//     // flex: 1,
-//     // flexDirection: "row",
-//     justifyContent: "space-around",
-//   },
-//   backgroundImage: {
-//     flex: 4,
-//     width: 500,
-//     height: 600,
-//     resizeMode: "contain",
-//     marginBottom: 10,
-//   },
-//   buttons: {
-//     width: 50,
-//     padding: 5,
-//     borderRadius: 6,
-//     position: "absolute",
-//     top: 100,
-//   },
-//   bottomContainer: {
-//     flex: 1,
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "space-around",
-//   },
-// });
+export default App;

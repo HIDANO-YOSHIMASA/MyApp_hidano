@@ -14,27 +14,31 @@ const menu = [
     uri:"../assets/hamburger.png",
     title: "牛肉のステーキ", 
     text: "美味しいお肉", 
+    price: 1000,
   }, 
   {  
     uri:"../assets/hamburger.png",
     title: "牛肉のステーキ", 
     text: "美味しいお肉", 
+    price: 1000,
   }, 
   {  
     uri:"../assets/hamburger.png",
     title: "牛肉のステーキ", 
     text: "美味しいお肉", 
+    price: 1000,
   }, 
   
 ];
 
   
   return (
-    <View>
-      <Image
-        source={uri: menu[0].uri}
-      />
-    </View>
+    <View></View>
+    // <View>
+    //   <Image
+    //     source={uri: menu[0].uri}
+    //   />
+    // </View>
 
     // <FlatList
     // data={menu}
