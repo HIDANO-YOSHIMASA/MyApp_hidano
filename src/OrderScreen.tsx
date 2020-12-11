@@ -11,6 +11,12 @@ export default function FoodScreen({ navigation }: Props) {
 
   const [count, setCount] = useState(0);
   const [take, setTake] = useState(0);
+  const [result, setResult] = useState(0);
+
+  const calcResult = () => {
+    const calc = count * 0.8;
+    setResult(calc)
+  }
   
   const countUp = () => {
     setCount(count + 1);
@@ -26,16 +32,18 @@ export default function FoodScreen({ navigation }: Props) {
   }
 
   const countItems = (
-    <View>
-      <Text style={{ fontSize: 16 }}>数量</Text>
-      <Text style={{ fontSize: 45 }}>{count}</Text>
-      <Pressable style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-        <Text style={{ fontSize: 24 }} onPress={countUp}>
-          +
-        </Text>
-        <Text style={{ fontSize: 45 }} onPress={countDown}>
-          -
-        </Text>
+    <View style={styles.countContainer}>
+      <Text style={{ fontSize: 12 }}>数量</Text>
+      <Text style={{ fontSize: 30 }}>{count}</Text>
+      <Pressable style={{flexDirection:'row', justifyContent:'center'}}>
+        <View style={{justifyContent: 'space-around', flexDirection: 'row'}}>
+          <Text style={{ fontSize: 24, marginRight: 12}} onPress={countUp}>
+            +
+          </Text>
+          <Text style={{ fontSize: 45 }} onPress={countDown}>
+            -
+          </Text>
+        </View>
       </Pressable>
     </View>
 
@@ -44,10 +52,10 @@ export default function FoodScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ flex: 4 }}>
+      <View style={{ flex: 1.8}}>
         <Image
           source={Pic01}
-          style={{ width: 350, height: 350, resizeMode: "contain" }}
+          style={{ width: 200, height: 200, resizeMode: "contain" }}
         />
       </View>
 
@@ -63,11 +71,10 @@ export default function FoodScreen({ navigation }: Props) {
 
       <View style={{ flex: 1 }}>
         <Pressable style={styles.button}>
-          <Text>ご注文</Text>
+          <Text onPress={calcResult}>ご注文</Text>
         </Pressable>
+        <Text>{result}円</Text>
       </View>
-
-    
     </SafeAreaView>
   );
 }
@@ -75,17 +82,18 @@ export default function FoodScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "gray",
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
-  button:{
+  countContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  button: {
     fontSize: 12,
     borderRadius: 8,
-    borderWidth:2,
-    backgroundColor: 'res',
-    color: 'white',
+    borderWidth: 2,
+    color: "white",
     padding: 10,
-  }
+  },
 });
