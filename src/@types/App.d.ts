@@ -1,15 +1,21 @@
-interface Menu {
-    uri:string;
+interface MenuInfo {
+    pic:string;
     title: string;
     text: string;
     price: number;
+    createdAt:number;
+}
+
+interface List {
+    price: number,
+    createdAt: number
 }
 
 type RootStackParamList = {
     Home: undefined;
     Menu: undefined;
     Food: undefined;
-    Order: undefined;
+    Order: {menuInfo: MenuInfo};
     Result: undefined;
 }
 

@@ -5,30 +5,76 @@ import {
   Text,
   StyleSheet,
   View,
-  ImageBackground,
+  Image,
+  Pressable,
+  Button,
   Animated,
   Platform,
   useWindowDimensions,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-
+import pic00 from '../assets/steak.jpg';
+import pic01 from '../assets/hamburger.jpg';
+import pic02 from '../assets/chickenWings.jpg';
+import pic03 from '../assets/sandwich.jpg';
+import pic04 from '../assets/saladRoll.jpg';
 
 type Props = {
-  navigation: StackNavigationProp<RootStackParamList, "Food">;
+  navigation: StackNavigationProp<RootStackParamList, 'Food'>;
 };
 
-const images = [
-  "fried-chicken-wings-pub-food.jpg",
-  "healthy-salad-roll.jpg",
-  "pakora-sandwich-indian-food.jpg",
-  "fried-chicken-wings-pub-food.jpg",
-  "healthy-salad-roll.jpg",
-  "pakora-sandwich-indian-food.jpg",
+
+
+export const images: MenuInfo[] = [
+  {
+    pic: pic00,
+    title: "ステーキ",
+    text:
+      "ステーキ（英: steak）は、牛の上質な部位の精肉で、筋繊維の走行に対して垂直にカットされた比較的厚切りの肉片。日本においては、その肉を使った料理や調理法を意味する",
+    price: 1800,
+    createdAt: 3243242,
+  },
+  {
+    pic: pic01,
+    title: "ハンバーガー",
+    text:
+      "第二次世界大戦後に佐世保（長崎県）に駐留した米軍を通じて、本格的に日本にハンバーガーが持ち込まれたとされている。",
+    price: 1200,
+    createdAt: 3243242,
+  },
+  {
+    pic: pic02,
+    title: "チキンウイング",
+    text:
+      "鶏はもっとも代表的な家禽であり、単に鳥肉といえば鶏肉を指すことが多い。牛肉、豚肉、羊肉と並んで世界で日常的に食用にされる肉のひとつである。",
+    price: 1280,
+    createdAt: 3243242,
+  },
+  {
+    pic: pic03,
+    title: "サンドウィイッチ",
+    text:
+      "サンドイッチ、サンドウィッチ（英語: sandwich）とは、パンなどに肉や野菜、卵等の具を挟んだり、乗せたりした料理のこと。",
+    price: 780,
+    createdAt: 3243242,
+  },
+  {
+    pic: pic04,
+    title: "サラダ",
+    text:
+      "サラダ（英語: Salad ）とは、野菜などの具材に塩、酢、油、香辛料などの調味料をふりかけるか、和えて盛りつけた料理の総称。",
+    price: 680,
+    createdAt: 3243242,
+  },
 ];
 
 export default function FoodScreen({ navigation }: Props) {
 
 const scrollX = useRef(new Animated.Value(0)).current;
+
+const toOrder = (menuInfo: MenuInfo) => {
+  navigation.navigate("Order", {menuInfo: menuInfo});
+};
 
 const { width: windowWidth } = useWindowDimensions();
   
@@ -53,17 +99,39 @@ const { width: windowWidth } = useWindowDimensions();
         >
           {images.map((image, imageIndex) => {
             return (
-              <View
-                style={{ width: windowWidth, height: 250 }}
-                key={imageIndex}
-              >
-                <ImageBackground source={{ uri: image }} style={styles.card}>
-                  <View style={styles.textContainer}>
-                    <Text style={styles.infoText}>
-                      {"Image - " + imageIndex}
-                    </Text>
-                  </View>
-                </ImageBackground>
+              <View style={{ width: windowWidth }} key={imageIndex}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.infoText}>{image.title}</Text>
+                </View>
+                {/* <View style={{flex: 0.4}}></View> */}
+                <Pressable
+                  style={{ alignItems: "center" }}
+                  onPress={() => {
+                    toOrder(image);
+                  }}
+                >
+                  <Image
+                    source={image.pic}
+                    style={{
+                      width: 300,
+                      height: 300,
+                      resizeMode: "contain",
+                      marginVertical: 12,
+                    }}
+                  />
+                </Pressable>
+                <View style={{ flex: 1, alignItems: "center" }}>
+                  <Text
+                    style={{
+                      width: "80%",
+                      textAlign: "center",
+                      marginVertical: 12,
+                    }}
+                  >
+                    {image.text}
+                  </Text>
+                  <Text style={{ fontSize: 24 }}>￥{image.price}円</Text>
+                </View>
               </View>
             );
           })}
@@ -96,22 +164,27 @@ const { width: windowWidth } = useWindowDimensions();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "gray",
     alignItems: "center",
+    justifyContent: 'center',
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   scrollContainer: {
+    flex:8,
     height: 300,
     alignItems: "center",
     justifyContent: "center",
   },
   card: {
     flex: 1,
-    marginVertical: 4,
-    marginHorizontal: 16,
+    width:500,
+    height: 450,
+    resizeMode:'contain',
+    marginBottom: 8,
+    marginTop: 5,
+    // marginHorizontal: 16,
     borderRadius: 5,
+    alignItems:'center',
     overflow: "hidden",
-    alignItems: "center",
     justifyContent: "center",
   },
   textContainer: {
@@ -133,6 +206,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   indicatorContainer: {
+    flex:0.5,
+    paddingTop:45,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
