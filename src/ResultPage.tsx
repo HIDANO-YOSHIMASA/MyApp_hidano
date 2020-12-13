@@ -28,7 +28,7 @@ export default function ResultScreen(props: Props) {
       setList(newLists);
     };
     // 画面が戻ってきた時に動作するようにnavigationの動作に追加
-    // navigation.addListener("focus", initialize);
+    navigation.addListener("focus", initialize);
   });                
     
   return (

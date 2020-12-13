@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import { StyleSheet, Text, View, Button, Image, Pressable, SafeAreaView, Platform } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { NavigationHelpersContext,RouteProp, useNavigation } from "@react-navigation/native";
+import { NavigationHelpersContext,RouteProp,} from "@react-navigation/native";
 import { save } from "./Store"; 
-import pic01 from '../assets/hamburger.jpg';
+
 
 // type Props = {
 //   navigation: StackNavigationProp<RootStackParamList, "Order">;
@@ -18,7 +18,7 @@ type Props = {
 
 export default function OrderScreen(props: Props) {
   const info: MenuInfo = props.route.params.menuInfo
-  const navigation = useNavigation;
+  // const navigation = useNavigation;
 
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
@@ -33,11 +33,11 @@ export default function OrderScreen(props: Props) {
 
       const countUp = () => {
         setCountA(countA + 1);
-        setResultA((countA + 1) * info.price * 1.08);
+        setResultA((countA +1) * info.price * 1.08);
       }
       const countDown = () => {
         setCountA(countA - 1);
-        setResultA((countA - 1) * info.price * 1.08);
+        setResultA((countA -1) * info.price * 1.08);
         if(countA === 0){
           setCountA(0)
           setResultA(0);
@@ -45,17 +45,17 @@ export default function OrderScreen(props: Props) {
       }
       const countUp2 = () => {
         setCountB(countB + 1);
-        setResultB((countB + 1) * info.price * 1.1);
+        setResultB((countB +1) * info.price * 1.1);
       }
       const countDown2 = () => {
         setCountB(countB - 1);
-        setResultB((countB - 1) * info.price * 1.1);
+        setResultB((countB -1) * info.price * 1.1);
         if(countB === 0){
           setCountB(0);
           setResultB(0);
         }
       }
-      setPrice(resultA + resultB);
+      const finalResult = Math.floor((resultA + resultB));
   
   
 
@@ -101,7 +101,7 @@ export default function OrderScreen(props: Props) {
       <View style={{ flex: 1.8 }}>
         <Image
           source={info.pic}
-          style={{ width: 250, height: 200, resizeMode: "contain" }}
+          style={{ width: 250, height: 250, resizeMode: "contain" }}
         />
         <Text style={{textAlign: 'center', marginTop:18,fontSize: 21}}>￥{info.price}円</Text>
       </View>
@@ -118,7 +118,7 @@ export default function OrderScreen(props: Props) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={{marginBottom: 12}}>合計金額:{price}円</Text>
+        <Text style={{marginBottom: 12}}>合計金額:{finalResult}円</Text>
         <View>
           <Pressable
             style={styles.button}
