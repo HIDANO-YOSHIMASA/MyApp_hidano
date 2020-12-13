@@ -29,11 +29,11 @@ export default function OrderScreen(props: Props) {
   const [countB, setCountB] = useState(0);
   const [resultA, setResultA] = useState(0);
   const [resultB, setResultB] = useState(0);
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
 
       const onSave = () => {
-        save(info.title, finalResult, Date.now());
-        navigation.navigate("Result")
+        save(title, price, Date.now());
+        navigation.navigate("Result");
       };
 
       const countUp = () => {
@@ -108,7 +108,7 @@ export default function OrderScreen(props: Props) {
           source={info.pic}
           style={{ width: 250, height: 250, resizeMode: "contain" }}
         />
-        <Text style={{textAlign: 'center', marginTop:18,fontSize: 21}}>￥{info.price}円</Text>
+        <Text style={{textAlign: 'center',fontSize: 21}}>￥{info.price}円</Text>
       </View>
       <View style={{flex:1, flexDirection: "row", justifyContent:'space-around', }}>
         <View>
@@ -123,20 +123,20 @@ export default function OrderScreen(props: Props) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={{marginBottom: 12}}>合計金額:{finalResult}円</Text>
+        <Text style={{marginBottom: 12, fontSize:20,}}>合計金額:{finalResult}円</Text>
+      </View>
         <View>
           <Pressable
             style={styles.button}
             // onPress={onSave}
           >
             <Text 
-            style={{ fontWeight: "bold" }}
+            style={{ fontWeight: "bold", paddingHorizontal:10, color:'white', }}
             // onPress={()=>navigation.navigate('Result')}
             onPress={onSave}
             >確認</Text>
           </Pressable>
         </View>
-      </View>
     </SafeAreaView>
   );
 }
@@ -154,18 +154,18 @@ const styles = StyleSheet.create({
   title: {
     color:'white',
     width:'90%',
-    backgroundColor: 'gray',
+    backgroundColor: 'royalblue',
     padding:5,
     borderRadius: 5,
   },
   button: {
     fontSize: 12,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'royalblue',
     borderRadius: 8,
-    borderWidth: 2,
+    // borderWidth: 2,
     textAlign: 'center',
     alignItems:'center',
-    color: "white",
+    // color: "white",
     padding: 5,
   },
   calcButton: {

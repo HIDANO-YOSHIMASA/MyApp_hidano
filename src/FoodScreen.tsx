@@ -123,6 +123,7 @@ const { width: windowWidth } = useWindowDimensions();
                 <View style={{ flex: 1, alignItems: "center" }}>
                   <Text
                     style={{
+                      color: 'dimgray',
                       width: "80%",
                       textAlign: "center",
                       marginVertical: 12,
@@ -130,7 +131,7 @@ const { width: windowWidth } = useWindowDimensions();
                   >
                     {image.text}
                   </Text>
-                  <Text style={{ fontSize: 24 }}>￥{image.price}円</Text>
+                  <Text style={{ fontSize: 24, color:'dimgray' }}>￥{image.price}円</Text>
                 </View>
               </View>
             );
@@ -166,6 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: 'center',
+    // backgroundColor: 'beige',
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   scrollContainer: {
@@ -188,7 +190,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textContainer: {
-    backgroundColor: "rgba(0,0,0, 0.7)",
+    backgroundColor: "dimgray",
     paddingHorizontal: 24,
     paddingVertical: 8,
     borderRadius: 5,
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 8,
     borderRadius: 4,
-    backgroundColor: "silver",
+    backgroundColor: "royalblue",
     marginHorizontal: 4,
   },
   indicatorContainer: {

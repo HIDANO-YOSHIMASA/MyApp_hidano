@@ -5,29 +5,22 @@ import {RouteProp, useNavigation } from "@react-navigation/native";
 import { loadAll } from "./Store"; 
 
 
-// type Props = {
-//   navigation: StackNavigationProp<RootStackParamList, "Result">;
-// };
-
-type OrderScreenRouteProps = RouteProp<RootStackParamList, "Result">;
-
 type Props = {
-  route: OrderScreenRouteProps;
+  navigation: StackNavigationProp<RootStackParamList, "Result">;
 };
+
+// type OrderScreenRouteProps = RouteProp<RootStackParamList, "Result">;
+
+// type Props = {
+//   route: OrderScreenRouteProps;
+// };
                 
 
-export default function ResultScreen(props: Props) {  
+export default function ResultScreen({navigation}: Props) {  
   const [list, setList] = useState<List[]>([]);
-  const navigation = useNavigation;
-  const info: MenuInfo = props.route.params.menuInfo
+  // const navigation = useNavigation;
+  // const info: MenuInfo = props.route.params.menuInfo
 
-  const dammy = [
-    {
-      title: "ステーキ",
-      price: 1800,
-      createdAt: Date.now(),
-    },
-  ];
 
   useEffect(() => {
     const initialize = async () => {
@@ -42,7 +35,7 @@ export default function ResultScreen(props: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={dammy}
+        data={list}
         renderItem={({item})=>(
           <Text>{item.title}</Text>
         )}
