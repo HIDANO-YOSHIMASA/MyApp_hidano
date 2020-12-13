@@ -1,7 +1,11 @@
-import React, {useState} from "react";
+import React, {useState,} from "react";
 import { StyleSheet, Text, View, Button, Image, Pressable, SafeAreaView, Platform } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { NavigationHelpersContext,RouteProp,} from "@react-navigation/native";
+import {
+  NavigationHelpersContext,
+  RouteProp,
+  useNavigation,
+} from "@react-navigation/native";
 import { save } from "./Store"; 
 
 
@@ -18,7 +22,8 @@ type Props = {
 
 export default function OrderScreen(props: Props) {
   const info: MenuInfo = props.route.params.menuInfo
-  // const navigation = useNavigation;
+
+  const navigation = useNavigation();
 
   const [countA, setCountA] = useState(0);
   const [countB, setCountB] = useState(0);
@@ -124,7 +129,10 @@ export default function OrderScreen(props: Props) {
             style={styles.button}
             // onPress={onSave}
           >
-            <Text style={{ fontWeight: "bold" }}>確認</Text>
+            <Text 
+            style={{ fontWeight: "bold" }}
+            onPress={()=>navigation.navigate('Result')}
+            >確認</Text>
           </Pressable>
         </View>
       </View>
