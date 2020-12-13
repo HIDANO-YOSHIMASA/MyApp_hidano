@@ -134,7 +134,7 @@ export default function OrderScreen(props: Props) {
             style={{ fontWeight: "bold", paddingHorizontal:10, color:'white', }}
             // onPress={()=>navigation.navigate('Result')}
             onPress={onSave}
-            >確認</Text>
+            >注文確認</Text>
           </Pressable>
         </View>
     </SafeAreaView>
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'royalblue',
     padding:5,
     borderRadius: 5,
+    textAlign: 'center',
   },
   button: {
     fontSize: 12,

@@ -14,11 +14,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{title:"ホーム画面"}}/>
-        <Stack.Screen name="Menu" component={MenuScreen} options={{title:"メニュー画面"}}/>
-        <Stack.Screen name="Order" component={OrderScreen} options={{title:"オーダー画面"}}/>
-        <Stack.Screen name="Result" component={ResultScreen} options={{title:" 金額画面"}}/>
-        <Stack.Screen name="Food" component={FoodScreen} options={{title:"フード画面"}}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{title:"Home"}}/>
+        <Stack.Screen name="Menu" component={MenuScreen} options={{title:"Menu"}}/>
+        <Stack.Screen name="Order" component={OrderScreen} options={{title:"Order"}}/>
+        <Stack.Screen name="Result" component={ResultScreen} options={{title:"OrderList"}}/>
+        <Stack.Screen name="Food" component={FoodScreen} options={{title:"FoodMenu"}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -16,7 +16,7 @@ export default function HomeScreen({navigation}: Props) {
     <SafeAreaView style={styles.container}>
       <View style={styles.topContainer}>
         <Text style={styles.text} >
-          Contemporary Restaurant
+          Perfect Order
         </Text>
       </View>
 

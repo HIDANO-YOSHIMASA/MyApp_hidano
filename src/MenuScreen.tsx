@@ -13,12 +13,9 @@ type Props = {
 export default function MenuScreen({navigation}: Props) {
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        source={backImage}
-      />
-      <View style={{position:'absolute',top:220,}}>
-
-      <View style={styles.spacer}></View>
+      <Image source={backImage} />
+      <View style={{ position: "absolute", top: 220 }}>
+        <View style={styles.spacer}></View>
         <Text style={styles.text}>Menu</Text>
         <TouchableOpacity
           style={styles.iconContainer}
@@ -37,8 +34,7 @@ export default function MenuScreen({navigation}: Props) {
           <Icon style={styles.icon} name="coffee" size={20} />
           <Text style={styles.textStyle}>Sweets/スイーツ</Text>
         </TouchableOpacity>
-      <View style={styles.spacer}></View>
-
+        <View style={styles.spacer}></View>
       </View>
     </SafeAreaView>
   );
@@ -48,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "lightyellow",
+    backgroundColor: "gray",
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   spacer: {
@@ -73,10 +69,10 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: "white",
-    borderColor:'tomato',
-    borderBottomWidth:2,
-    padding:4,
-    borderRadius:4,
+    // borderColor:'tomato',
+    // borderBottomWidth:2,
+    padding: 4,
+    borderRadius: 4,
     fontSize: 14,
     fontWeight: "bold",
   },
