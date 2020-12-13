@@ -31,10 +31,10 @@ export default function OrderScreen(props: Props) {
   const [resultB, setResultB] = useState(0);
   const [price, setPrice] = useState(0);
 
-      // const onSave = () => {
-      //   save(price, Date.now());
-      //   navigation.navigate("Result")
-      // };
+      const onSave = () => {
+        save(info.title, finalResult, Date.now());
+        navigation.navigate("Result")
+      };
 
       const countUp = () => {
         setCountA(countA + 1);
@@ -131,7 +131,8 @@ export default function OrderScreen(props: Props) {
           >
             <Text 
             style={{ fontWeight: "bold" }}
-            onPress={()=>navigation.navigate('Result')}
+            // onPress={()=>navigation.navigate('Result')}
+            onPress={onSave}
             >確認</Text>
           </Pressable>
         </View>

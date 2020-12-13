@@ -8,7 +8,7 @@ interface MenuInfo {
 
 interface List {
     title:string;
-    price: number,
+    finalResult: number,
     createdAt: number
 }
 
@@ -17,7 +17,7 @@ type RootStackParamList = {
     Menu: undefined;
     Food: undefined;
     Order: {menuInfo: MenuInfo};
-    Result: undefined;
+    Result: {menuInfo: MenuInfo};
 }
 
 declare module "*.jpg";
