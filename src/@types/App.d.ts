@@ -7,6 +7,7 @@ interface MenuInfo {
 }
 
 interface List {
+    title:string;
     price: number,
     createdAt: number
 }

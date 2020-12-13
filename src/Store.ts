@@ -8,12 +8,13 @@ const storage = new Storage({
     enableCache: true,
 });
 
-export const save = (price: number, createdAt: number) => {
+export const save = (title: string, price: number, createdAt: number) => {
     const key = 'menu';
     storage.save({
         key: key,           
         id: `${createdAt}`,     
         data: {
+            title: title,
             price: price,
             createdAt: createdAt,
         },
