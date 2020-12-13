@@ -16,7 +16,7 @@ export default function MenuScreen({navigation}: Props) {
       <Image source={backImage} />
       <View style={{ position: "absolute", top: 220 }}>
         <View style={styles.spacer}></View>
-        <Text style={styles.text}>Menu</Text>
+        <Text style={styles.text}>・・Menu・・</Text>
         <TouchableOpacity
           style={styles.iconContainer}
           onPress={() => navigation.navigate("Food")}
