@@ -133,7 +133,7 @@ export default function OrderScreen(props: Props) {
             <Text 
             style={{ fontWeight: "bold", paddingHorizontal:10, color:'white', }}
             // onPress={()=>navigation.navigate('Result')}
-            onPress={onSave}
+            // onPress={onSave}
             >注文確認</Text>
           </Pressable>
         </View>
